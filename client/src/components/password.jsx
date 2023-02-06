@@ -41,20 +41,20 @@ const Password = () => {
               <input
                 {...formik.getFieldProps("password")}
                 className={styles.textbox}
-                type="text"
+                type="password"
                 placeholder="Password"
               />
               <button className={styles.btn} type="submit">
-                Let's Go
+                Signin
               </button>
             </div>
           </form>
 
           <div className="text-center py-4">
             <span className="text-gray-500">
-              Not a Member{" "}
-              <Link className="text-green-500" to="/register">
-                Register Now
+              Forgot Password?{" "}
+              <Link className="text-green-500" to="/recover">
+                Recover Now
               </Link>
             </span>
           </div>

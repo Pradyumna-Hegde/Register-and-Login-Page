@@ -5,7 +5,7 @@ import UserName from "./components/username";
 import Register from "./components/register";
 import Password from "./components/password";
 import Profile from "./components/profile";
-import Recovery from "./components/recovery";
+import Recover from "./components/recover";
 import Reset from "./components/reset";
 import PageNotFound from "./components/pagenotfound";
 
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
     element: <Profile />,
   },
   {
-    path: "/recovery",
-    element: <Recovery />,
+    path: "/recover",
+    element: <Recover />,
   },
   {
     path: "/reset",
