@@ -39,13 +39,10 @@ const Profile = () => {
     <div className="container mx-auto">
       <Toaster position="top-center" reverseOrder={false}></Toaster>
       <div className="flex justify-center items-center h-screen">
-        <div
-          className={`${styles.glass} ${extend.glass}`}
-          style={{ width: "45%", paddingTop: "3em" }}
-        >
+        <div className={`${styles.glass} ${extend.glass}`}>
           <div className="title flex flex-col items-center">
-            <h4 className="text-5xl font-bold">Profile</h4>
-            <span className="py-4 text-xl w-2/3 text-center text-gray-500">
+            <h4 className="text-3xl font-bold">Authenticator</h4>
+            <span className="py-2 text-xl w-2/3 text-center text-gray-500">
               Update your profile
             </span>
           </div>
@@ -110,10 +107,10 @@ const Profile = () => {
             </div>
           </form>
 
-          <div className="text-center py-4">
-            <span className="text-gray-500">
+          <div className="text-center py-1">
+            <span className="text-gray-900">
               come back later?{" "}
-              <Link className="text-green-500" to="/">
+              <Link className="text-blue-700 underline" to="/">
                 Logout
               </Link>
             </span>

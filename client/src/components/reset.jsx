@@ -25,13 +25,13 @@ const Reset = () => {
       <div className="flex justify-center items-center h-screen">
         <div className={styles.glass}>
           <div className="title flex flex-col items-center">
-            <h4 className="text-5xl font-bold">Reset</h4>
-            <span className="py-4 text-xl w-2/3 text-center text-gray-500">
+            <h4 className="text-3xl font-bold">Authenticator</h4>
+            <span className="py-2 text-xl w-2/3 text-center text-gray-500">
               Enter new password
             </span>
           </div>
 
-          <form className="py-1" onSubmit={formik.handleSubmit}>
+          <form className="py-10" onSubmit={formik.handleSubmit}>
             <div className="textbox flex flex-col items-center gap-6">
               <input
                 {...formik.getFieldProps("new_password")}
