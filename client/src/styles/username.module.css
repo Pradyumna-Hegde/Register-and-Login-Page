@@ -31,7 +31,7 @@
 }
 
 .btn {
-  @apply border bg-green-500 w-3/4 py-2 rounded-md font-bold text-gray-900 text-lg text-center;
+  @apply border bg-green-500 w-3/4 py-2 rounded-md text-gray-900 text-lg text-center;
 }
 
 .btn:hover {
