@@ -8,6 +8,19 @@ import { validatePassword } from "../helper/validate";
 import styles from "../styles/username.module.css";
 
 const Password = () => {
+  const {
+    glass,
+    title,
+    h4,
+    pageDescription,
+    profile_img,
+    textbox,
+    btn,
+    smallRoute,
+    smallRouteSpan,
+    smallRouteLink,
+  } = styles;
+
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -24,36 +37,34 @@ const Password = () => {
     <div className="container mx-auto">
       <Toaster position="top-center" reverseOrder={false}></Toaster>
       <div className="flex justify-center items-center h-screen">
-        <div className={styles.glass}>
-          <div className="title flex flex-col items-center">
-            <h4 className="text-3xl font-bold">Authenticator</h4>
-            <span className="py-2 text-xl w-2/3 text-center text-gray-500">
-              Enter the password
-            </span>
+        <div className={glass}>
+          <div className={title}>
+            <h4 className={h4}>Authenticator</h4>
+            <span className={pageDescription}>Enter the password</span>
           </div>
 
           <form className="py-1" onSubmit={formik.handleSubmit}>
             <div className="profile flex justify-center py-4">
-              <img src={avatar} className={styles.profile_img} alt="avatar" />
+              <img src={avatar} className={profile_img} alt="avatar" />
             </div>
 
             <div className="textbox flex flex-col items-center gap-6">
               <input
                 {...formik.getFieldProps("password")}
-                className={styles.textbox}
+                className={textbox}
                 type="password"
                 placeholder="Password"
               />
-              <button className={styles.btn} type="submit">
+              <button className={btn} type="submit">
                 Signin
               </button>
             </div>
           </form>
 
-          <div className="text-center py-1">
-            <span className="text-gray-900">
+          <div className={smallRoute}>
+            <span className={smallRouteSpan}>
               Forgot Password?{" "}
-              <Link className="text-blue-700 underline" to="/recover">
+              <Link className={smallRouteLink} to="/recover">
                 Recover Now
               </Link>
             </span>

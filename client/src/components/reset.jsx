@@ -6,6 +6,18 @@ import { validateResetPassword } from "../helper/validate";
 import styles from "../styles/username.module.css";
 
 const Reset = () => {
+  const {
+    glass,
+    title,
+    h4,
+    pageDescription,
+    textbox,
+    btn,
+    smallRoute,
+    smallRouteSpan,
+    smallRouteLink,
+  } = styles;
+
   const formik = useFormik({
     initialValues: {
       new_password: "",
@@ -23,29 +35,27 @@ const Reset = () => {
     <div className="container mx-auto">
       <Toaster position="top-center" reverseOrder={false}></Toaster>
       <div className="flex justify-center items-center h-screen">
-        <div className={styles.glass}>
-          <div className="title flex flex-col items-center">
-            <h4 className="text-3xl font-bold">Authenticator</h4>
-            <span className="py-2 text-xl w-2/3 text-center text-gray-500">
-              Enter new password
-            </span>
+        <div className={glass}>
+          <div className={title}>
+            <h4 className={h4}>Authenticator</h4>
+            <span className={pageDescription}>Enter new password</span>
           </div>
 
           <form className="py-10" onSubmit={formik.handleSubmit}>
             <div className="textbox flex flex-col items-center gap-6">
               <input
                 {...formik.getFieldProps("new_password")}
-                className={styles.textbox}
+                className={textbox}
                 type="password"
                 placeholder="New Password"
               />
               <input
                 {...formik.getFieldProps("confirm_password")}
-                className={styles.textbox}
+                className={textbox}
                 type="password"
                 placeholder="Confirm Password"
               />
-              <button className={styles.btn} type="submit">
+              <button className={btn} type="submit">
                 Save
               </button>
             </div>

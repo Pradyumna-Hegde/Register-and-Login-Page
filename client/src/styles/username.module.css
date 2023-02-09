@@ -5,6 +5,18 @@
   @apply shrink-0 h-fit w-[40%] rounded-md py-8 px-7 min-w-max;
 }
 
+.title {
+  @apply flex flex-col items-center;
+}
+
+.h4 {
+  @apply text-4xl font-bold text-gray-600;
+}
+
+.pageDescription {
+  @apply py-2 text-xl w-2/3 text-center text-gray-500;
+}
+
 .profile_img {
   @apply w-28 rounded-full shadow-lg cursor-pointer;
 }
@@ -28,4 +40,16 @@
 
 input[type="file"] {
   display: none;
+}
+
+.smallRoute {
+  @apply text-center py-1;
+}
+
+.smallRouteSpan {
+  @apply text-gray-900;
+}
+.smallRouteLink,
+.smallRouteButton {
+  @apply text-blue-700 underline;
 }

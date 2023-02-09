@@ -10,6 +10,19 @@ import styles from "../styles/username.module.css";
 import extend from "../styles/profile.module.css";
 
 const Profile = () => {
+  const {
+    glass,
+    title,
+    h4,
+    pageDescription,
+    profile_img,
+    textbox,
+    btn,
+    smallRoute,
+    smallRouteSpan,
+    smallRouteLink,
+  } = styles;
+
   const [file, setFile] = useState();
 
   const formik = useFormik({
@@ -39,12 +52,10 @@ const Profile = () => {
     <div className="container mx-auto">
       <Toaster position="top-center" reverseOrder={false}></Toaster>
       <div className="flex justify-center items-center h-screen">
-        <div className={`${styles.glass} ${extend.glass}`}>
-          <div className="title flex flex-col items-center">
-            <h4 className="text-3xl font-bold">Authenticator</h4>
-            <span className="py-2 text-xl w-2/3 text-center text-gray-500">
-              Update your profile
-            </span>
+        <div className={`${glass} ${extend.glass}`}>
+          <div className={title}>
+            <h4 className={h4}>Authenticator</h4>
+            <span className={pageDescription}>Update your profile</span>
           </div>
 
           <form className="py-1" onSubmit={formik.handleSubmit}>
@@ -52,7 +63,7 @@ const Profile = () => {
               <label htmlFor="profile">
                 <img
                   src={file || avatar}
-                  className={`${styles.profile_img} ${extend.profile_img}`}
+                  className={`${profile_img} ${extend.profile_img}`}
                   alt="avatar"
                 />
               </label>
@@ -68,13 +79,13 @@ const Profile = () => {
               <div className="name flex w-3/4 gap-10">
                 <input
                   {...formik.getFieldProps("firstname")}
-                  className={`${styles.textbox} ${extend.textbox}`}
+                  className={`${textbox} ${extend.textbox}`}
                   type="text"
                   placeholder="First Name"
                 />
                 <input
                   {...formik.getFieldProps("lastname")}
-                  className={`${styles.textbox} ${extend.textbox}`}
+                  className={`${textbox} ${extend.textbox}`}
                   type="text"
                   placeholder="Last Name"
                 />
@@ -83,13 +94,13 @@ const Profile = () => {
               <div className="name flex w-3/4 gap-10">
                 <input
                   {...formik.getFieldProps("mobile")}
-                  className={`${styles.textbox} ${extend.textbox}`}
+                  className={`${textbox} ${extend.textbox}`}
                   type="text"
                   placeholder="Mobile Number"
                 />
                 <input
                   {...formik.getFieldProps("email")}
-                  className={`${styles.textbox} ${extend.textbox}`}
+                  className={`${textbox} ${extend.textbox}`}
                   type="text"
                   placeholder="Email"
                 />
@@ -97,20 +108,20 @@ const Profile = () => {
 
               <input
                 {...formik.getFieldProps("address")}
-                className={`${styles.textbox} ${extend.textbox}`}
+                className={`${textbox} ${extend.textbox}`}
                 type="text"
                 placeholder="Address"
               />
-              <button className={styles.btn} type="submit">
+              <button className={btn} type="submit">
                 Signin
               </button>
             </div>
           </form>
 
-          <div className="text-center py-1">
-            <span className="text-gray-900">
+          <div className={smallRoute}>
+            <span className={smallRouteSpan}>
               come back later?{" "}
-              <Link className="text-blue-700 underline" to="/">
+              <Link className={smallRouteLink} to="/">
                 Logout
               </Link>
             </span>
