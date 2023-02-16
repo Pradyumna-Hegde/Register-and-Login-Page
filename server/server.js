@@ -1,23 +1,35 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+import connect from "./database/conn.js";
+import router from "./router/route.js";
 
 const app = express();
+const PORT = 8000;
 
-/** middlewears */
+// Middlewares
 app.use(express.json());
 app.use(cors());
 app.use(morgan("tiny"));
-app.disable("x-powered-by"); // less hackers know about our stack
+app.disable("x-powered-by");
 
-const PORT = 12000;
-
-// HTTP get requests.
+// HTTP GET requests.
 app.get("/", (req, res) => {
-  res.status(201).json("Home GET request");
+  res.send("My first HTTP GET request");
 });
 
-// start the server.
-app.listen(PORT, () => {
-  console.log(`Server connected to http://localhost:${PORT}`);
-});
+// API routes.
+app.use("/api", router);
+
+// Start server when we have valid connection.
+connect()
+  .then(() => {
+    try {
+      app.listen(PORT, () =>
+        console.log(`Server connected to http://localhost:${PORT}`)
+      );
+    } catch (error) {
+      console.log(`cannot connect to server`);
+    }
+  })
+  .catch((error) => console.log(`Invalid database connection ......`));
