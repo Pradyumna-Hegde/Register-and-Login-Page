@@ -139,9 +139,26 @@ export async function login(req, res) {
   }
 }
 
-// POST: http://localhost:8080/api/user/<username>
+// POST: http://localhost:8080/api/getUser/<username>
 export async function getUser(req, res) {
-  res.json("getUser route");
+  const { username } = req.params;
+  try {
+    if (!username) return res.status(501).send({ error: "Invalid username" });
+
+    username.findOne({ username }, (err, user) => {
+      if (err) return res.status(500).send({ err });
+      if (!user)
+        return res.status(501).send({ error: "Couldn't find the user" });
+
+      // remove password from user.
+      // mongoose return unnecessary data with object so convert it in to json.
+      const { password, ...rest } = Object.assign({}, user.json());
+
+      return res.status(201).send(user);
+    });
+  } catch (error) {
+    return res.status(404).send({ error: "Cannot Find User Data" });
+  }
 }
 
 /** PUT: http://localhost:8080/api/updateUser
@@ -155,7 +172,24 @@ body {
 }
 */
 export async function updateUser(req, res) {
-  res.json("getUser route");
+  try {
+    const id = req.query.id;
+    const { userId } = req.user;
+
+    if (userId) {
+      const body = req.body;
+
+      // update the data.
+      userModel.updateOne({ _id: userId }, body, (err, data) => {
+        if (err) throw err;
+        return res.status(201).send({ msg: "Record updated ...!" });
+      });
+    } else {
+      return res.status(401).send({ error: "User Not Found ...!" });
+    }
+  } catch (error) {
+    return res.status(401).send({ error });
+  }
 }
 
 /** GET: http://localhost:8080/api/generateOTP */
